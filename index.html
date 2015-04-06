@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数字排序</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="m-menu">
+        <select name="level" id="J_level">
+            <option value="3" selected="selected">新手</option>
+            <option value="4">初级</option>
+            <option value="5">中级</option>
+            <option value="6">高级</option>
+            <option value="7">专家</option>
+        </select>
+        <a href="javascript:void(0)" class="u-btn z-enable" data-st="0" id="J_play">开始游戏</a>
+        <a href="javascript:void(0)" class="u-btn z-disabled" id="J_pause">暂停游戏</a>
+        <a href="javascript:void(0)" class="u-btn z-disabled" id="J_stop">结束游戏</a>
+        时间：<span class="u-record" id="J_time">0</span>步数：<span class="u-record" id="J_step">0</span>
+    </div>
+    <div class="des">
+        点击空白格子周围的单元格进行位置交换,先行后列将数字从小到大排序为过关.
+    </div>
+    <div class="g-gamebox">
+        <ul class="m-game" id="J_game"></ul>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html>
