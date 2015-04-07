@@ -31,7 +31,7 @@ Game.prototype = {
         }
 
         // 当数组为有序数组的时候,随机打乱数字序列
-        while (this.isOrder()) {            
+        while (this.isOrder()) {
             this.numbers.sort(function() {
                 return Math.random() - 0.5;
             });
@@ -76,24 +76,25 @@ Game.prototype = {
         this.addClickEvent();
     },
     addClickEvent: function() {
-        var _this = this,
-            li = this.getId(this.box).getElementsByTagName("li");
+        var _this = this;
 
-        for (var i = 0, len = li.length; i < len; i++) {
-            li[i].onclick = function() {
-                if (_this.lock) {
-                    alert("游戏已暂停或结束,请点击继续或选择新的难度..");
-                    return false;
-                }
-                if (_this.numbers[this.index] == 0) {
-                    return false;
-                }
+        //格子点击事件,托管到父级容器
+        this.getId(this.box).onclick = function(e) {
+            var e = e || window.event;
+            var target = e.target || e.srcElement; //兼容ie7,8  
+            
+            if (_this.lock) {
+                alert("游戏已暂停或结束,请点击继续或选择新的难度..");
+                return false;
+            }
+            if (_this.numbers[target.index] == 0) {
+                return false;
+            }
 
-                var cellInfo = _this.getCellInfo(this.id);
-                cellInfo.index = this.index;
-                _this.findCells(cellInfo);
-            };
-        }
+            var cellInfo = _this.getCellInfo(target.id);
+            cellInfo.index = target.index;
+            _this.findCells(cellInfo);
+        };
 
         this.getId("J_pause").onclick = function() {
             var text = this.innerHTML,
@@ -207,8 +208,8 @@ Game.prototype = {
 
     },
     result: function(complete) {
-        if (complete) {  
-            alert("WIN!");                      
+        if (complete) {
+            alert("WIN!");
             this.stop();
         }
     },
