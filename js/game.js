@@ -1,6 +1,6 @@
 /*
-    main-1.2
-    update:2015-04-06 tabooc@163.com
+    main-1.3
+    update:2015-04-23 tabooc@163.com
     github:https://github.com/tabooc/numbersSort
 */
 
@@ -197,6 +197,10 @@ Game.prototype = {
     isOrder: function() {
         var next;
         //空白必须在最后 
+        if(this.numbers[0] == 0){
+            return false;
+        }
+        
         for (var i = 0, len = this.numbers.length - 2; i < len; i++) {
             next = i + 1;
             if (this.numbers[i] > this.numbers[next]) {
